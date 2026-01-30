@@ -1,0 +1,1069 @@
+/* index.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    top: 0 !important;
+}
+
+.skiptranslate, #goog-gt-tt {
+    display: none !important;
+}
+
+/* ==================================
+    JARVIS AI PRELOADER STYLES
+==================================
+*/
+
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0a192f; /* Dark blue background, matching your theme */
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+    color: #00c6ff; /* A futuristic cyan/blue color */
+    font-family: 'Montserrat', 'Segoe UI', 'Roboto', sans-serif;
+}
+
+/* HUD Corner Brackets - Created with pseudo-elements */
+#preloader::before,
+#preloader::after {
+    content: '';
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border-color: rgba(0, 198, 255, 0.3);
+    border-style: solid;
+    animation: corner-flicker 3s linear infinite;
+}
+
+#preloader::before {
+    top: 30px;
+    left: 30px;
+    border-width: 2px 0 0 2px;
+}
+
+#preloader::after {
+    bottom: 30px;
+    right: 30px;
+    border-width: 0 2px 2px 0;
+}
+
+
+/* The main container for the spinning animation */
+.jarvis-loader {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Styling for the two spinning rings */
+.loader-ring {
+    position: absolute;
+    border-radius: 50%;
+    border: 3px solid transparent;
+}
+
+.ring-1 {
+    width: 150px;
+    height: 150px;
+    border-top-color: #00c6ff;
+    animation: spin 2s linear infinite;
+}
+
+.ring-2 {
+    width: 120px;
+    height: 120px;
+    border-bottom-color: #0072ff;
+    animation: spin-reverse 1.5s linear infinite;
+}
+
+/* The central pulsating core */
+.loader-core {
+    width: 40px;
+    height: 40px;
+    background-color: #00c6ff;
+    border-radius: 50%;
+    box-shadow: 0 0 20px #00c6ff, 0 0 40px #00c6ff;
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* The "Initializing" text */
+.loading-text {
+    margin-top: 30px;
+    font-size: 16px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px rgba(0, 198, 255, 0.7);
+    animation: text-flicker 3s ease-in-out infinite;
+}
+
+
+/* ==================================
+    KEYFRAME ANIMATIONS
+==================================
+*/
+
+/* For the spinning rings */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+@keyframes spin-reverse {
+    to { transform: rotate(-360deg); }
+}
+
+/* For the pulsating core */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(0.9);
+        box-shadow: 0 0 20px #00c6ff, 0 0 40px #00c6ff;
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 30px #00c6ff, 0 0 60px #00c6ff;
+        opacity: 1;
+    }
+}
+
+/* For the loading text flicker */
+@keyframes text-flicker {
+    0%, 100% {
+        opacity: 1;
+        text-shadow: 0 0 10px rgba(0, 198, 255, 0.7);
+    }
+    50% {
+        opacity: 0.7;
+        text-shadow: 0 0 10px rgba(0, 198, 255, 0.5);
+    }
+}
+
+/* For the corner brackets */
+@keyframes corner-flicker {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.4;
+    }
+}
+
+
+/* Don't forget the class to hide the preloader! */
+.preloader-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+:root {
+    --primary-bg: #0a0e1a;
+    --secondary-bg: #1a1f2e;
+    --card-bg: #242938;
+    --accent-blue: #00d4ff;
+    --accent-green: #00ff88;
+    --accent-orange: #ff8800;
+    --accent-red: #ff4444;
+    --text-primary: #ffffff;
+    --text-secondary: #a0a8b8;
+    --border-color: #2a3441;
+    --hover-color: #2d3748;
+}
+
+[data-theme="light"] {
+    --primary-bg: #f0f2f5;
+    --secondary-bg: #ffffff;
+    --card-bg: #ffffff;
+    --text-primary: #212529;
+    --text-secondary: #6c757d;
+    --border-color: #dee2e6;
+    --hover-color: #e9ecef;
+    --accent-blue: #007bff;
+    --accent-green: #28a745;
+    --accent-orange: #fd7e14;
+    --accent-red: #dc3545;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--primary-bg);
+    color: var(--text-primary);
+    min-height: 100vh;
+    width: 100vw;
+    overflow-x: hidden;
+    position: relative;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Holographic Background Effects */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(ellipse at 50% 100%, rgba(0, 212, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(ellipse at 20% 80%, rgba(0, 255, 136, 0.05) 0%, transparent 40%);
+    z-index: -2;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        linear-gradient(90deg, rgba(0, 212, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(0, 212, 255, 0.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+    z-index: -1;
+    pointer-events: none;
+    animation: hologram-flicker 8s ease-in-out infinite;
+    transition: opacity 0.3s ease;
+}
+
+/* Hide effects on light theme */
+[data-theme="light"] body::before,
+[data-theme="light"] body::after {
+    opacity: 0;
+}
+
+
+@keyframes hologram-flicker {
+    0%, 100% { opacity: 0.8; }
+    50% { opacity: 0.7; }
+}
+
+/* Full Width Layout */
+.single-page-layout {
+    display: flex; 
+    flex-direction: column;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.full-width-container {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 300px 1fr 300px;
+    grid-template-rows: 1fr;
+    gap: 0;
+    padding-top: 78px;
+    overflow-y: auto;
+}
+
+/* Left Car Section */
+.left-car-section {
+    grid-column: 1 / 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+}
+
+/* Right Car Section */
+.right-car-section {
+    grid-column: 3 / 4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+}
+
+/* Center Content */
+.center-content {
+    grid-column: 2 / 3;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 100%;
+}
+
+.hero-badge {
+    display: inline-block;
+    background: var(--accent-blue);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    margin-bottom: 20px;
+    background: linear-gradient(45deg, var(--accent-orange), var(--accent-blue));
+}
+
+.hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    background: linear-gradient(45deg, var(--accent-blue), var(--accent-green), var(--accent-blue));
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradient-shift 3s ease-in-out infinite;
+}
+
+@keyframes gradient-shift {
+    0%, 100% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+.hero-subtitle {
+    background: linear-gradient(45deg, var(--accent-blue), var(--accent-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.hero-description {
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-bottom: 24px;
+    line-height: 1.5;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.hero-actions .btn-primary,
+.hero-actions .btn-secondary {
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.hero-actions .btn-primary {
+    background: var(--accent-blue);
+    color: white;
+}
+
+.hero-actions .btn-secondary {
+    background: transparent;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.hero-actions .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 212, 255, 0.4);
+    text-decoration: none;
+    color: white;
+}
+
+.hero-actions .btn-secondary:hover {
+    transform: translateY(-2px);
+    border-color: var(--accent-blue);
+    color: var(--accent-blue);
+    text-decoration: none;
+}
+
+.glow-effect {
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+    animation: pulse-glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-glow {
+    from {
+        box-shadow: 0 0 20px rgba(0, 212, 255, 0.5);
+    }
+    to {
+        box-shadow: 0 0 30px rgba(0, 212, 255, 0.8);
+    }
+}
+
+/* Key Features Center */
+.key-features-center {
+    margin-top: 40px;
+    width: 100%;
+    max-width: 600px;
+}
+
+.features-title {
+    font-size: 24px;
+    margin-bottom: 30px;
+    text-align: center;
+    background: linear-gradient(45deg, var(--accent-blue), var(--accent-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.features-grid-center {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.feature-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+}
+
+.feature-card-center {
+    background: var(--secondary-bg);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    text-align: center;
+    height: 100%;
+}
+
+.feature-card-link:hover .feature-card-center {
+    transform: translateY(-3px);
+    border-color: var(--accent-blue);
+    box-shadow: 0 8px 25px rgba(0, 212, 255, 0.3);
+}
+
+.feature-icon-center {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    margin: 0 auto 15px;
+}
+
+.feature-icon-center.green {
+    background: var(--accent-green);
+    color: black;
+}
+
+.feature-icon-center.blue {
+    background: var(--accent-blue);
+    color: white;
+}
+
+.feature-icon-center.orange {
+    background: var(--accent-orange);
+    color: white;
+}
+
+.feature-card-center h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+}
+
+.feature-card-center p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.4;
+    margin-bottom: 15px;
+}
+
+/* Feature Link */
+.feature-link {
+    display: inline-block;
+    margin-top: 15px;
+    color: var(--accent-blue);
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.feature-card-link:hover .feature-link {
+    color: var(--accent-green);
+    text-decoration: none;
+}
+
+/* Car Display */
+.car-display {
+    position: relative;
+    width: 200px;
+    height: 120px;
+}
+
+.car-outline {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.car-body {
+    width: 180px;
+    height: 80px;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.3), rgba(0, 255, 136, 0.2));
+    border: 2px solid rgba(0, 212, 255, 0.6);
+    border-radius: 40px 40px 20px 20px;
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+    animation: car-pulse 3s ease-in-out infinite;
+}
+
+.car-windows {
+    width: 140px;
+    height: 25px;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(0, 255, 136, 0.1));
+    border: 1px solid rgba(0, 212, 255, 0.4);
+    border-radius: 15px 15px 5px 5px;
+    position: absolute;
+    top: 10px;
+    left: 30px;
+}
+
+@keyframes car-pulse {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(0, 212, 255, 0.3);
+        opacity: 0.8;
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(0, 255, 136, 0.5);
+        opacity: 1;
+    }
+}
+
+/* Car Data Overlay */
+.car-data-overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+.data-point {
+    position: absolute;
+    background: var(--secondary-bg);
+    border: 1px solid var(--accent-blue);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-family: 'Courier New', monospace;
+    color: var(--accent-blue);
+    backdrop-filter: blur(3px);
+    animation: data-flicker 4s ease-in-out infinite;
+}
+
+.data-point.top-left {
+    top: -10px;
+    left: 0;
+}
+
+.data-point.top-right {
+    top: -10px;
+    right: 0;
+}
+
+.data-point.bottom-left {
+    bottom: -10px;
+    left: 0;
+}
+
+.data-point.bottom-right {
+    bottom: -10px;
+    right: 0;
+}
+
+@keyframes data-flicker {
+    0%, 95% {
+        opacity: 0.8;
+    }
+    96%, 98% {
+        opacity: 0.4;
+    }
+    99%, 100% {
+        opacity: 1;
+    }
+}
+
+.data-stream {
+    position: absolute;
+    width: 2px;
+    height: 30px;
+    background: linear-gradient(to bottom,
+        rgba(0, 212, 255, 0.8) 0%,
+        rgba(0, 255, 136, 0.6) 50%,
+        transparent 100%
+    );
+    animation: data-stream-flow 2s linear infinite;
+}
+
+.stream-1 {
+    top: 50%;
+    left: 20%;
+    animation-delay: 0s;
+}
+
+.stream-2 {
+    top: 30%;
+    left: 70%;
+    animation-delay: 0.5s;
+}
+
+.stream-3 {
+    top: 60%;
+    left: 30%;
+    animation-delay: 1s;
+}
+
+.stream-4 {
+    top: 40%;
+    left: 80%;
+    animation-delay: 1.5s;
+}
+
+@keyframes data-stream-flow {
+    0% {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(40px);
+        opacity: 0;
+    }
+}
+
+/* AI Car Graphics */
+.ai-car-graphics {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.ai-car {
+    position: absolute;
+    width: 120px;
+    height: 60px;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.2), rgba(0, 255, 136, 0.1));
+    border: 2px solid rgba(0, 212, 255, 0.4);
+    border-radius: 25px 25px 15px 15px;
+    opacity: 0.7;
+}
+
+.ai-car::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 15px;
+    width: 90px;
+    height: 25px;
+    background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(0, 255, 136, 0.08));
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    border-radius: 15px 15px 5px 5px;
+}
+
+.ai-car::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 10px;
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg,
+        rgba(0, 212, 255, 0.6) 0%,
+        rgba(0, 255, 136, 0.4) 50%,
+        rgba(0, 212, 255, 0.6) 100%
+    );
+    border-radius: 2px;
+    animation: car-glow 2s ease-in-out infinite alternate;
+}
+
+.ai-car.car-1 {
+    top: 20%;
+    left: 10%;
+    animation: float-car-1 8s ease-in-out infinite;
+}
+
+.ai-car.car-2 {
+    top: 60%;
+    right: 15%;
+    transform: scaleX(-1);
+    animation: float-car-2 10s ease-in-out infinite;
+}
+
+.ai-car.car-3 {
+    bottom: 25%;
+    left: 5%;
+    animation: float-car-3 12s ease-in-out infinite;
+}
+
+@keyframes car-glow {
+    0% {
+        box-shadow: 0 0 10px rgba(0, 212, 255, 0.3);
+        opacity: 0.6;
+    }
+    100% {
+        box-shadow: 0 0 20px rgba(0, 255, 136, 0.5);
+        opacity: 1;
+    }
+}
+
+@keyframes float-car-1 {
+    0%, 100% {
+        transform: translateY(0px) translateX(0px);
+        opacity: 0.7;
+    }
+    25% {
+        transform: translateY(-15px) translateX(20px);
+        opacity: 0.9;
+    }
+    50% {
+        transform: translateY(0px) translateX(40px);
+        opacity: 0.8;
+    }
+    75% {
+        transform: translateY(10px) translateX(20px);
+        opacity: 0.6;
+    }
+}
+
+@keyframes float-car-2 {
+    0%, 100% {
+        transform: scaleX(-1) translateY(0px) translateX(0px);
+        opacity: 0.6;
+    }
+    33% {
+        transform: scaleX(-1) translateY(-20px) translateX(-30px);
+        opacity: 0.8;
+    }
+    66% {
+        transform: scaleX(-1) translateY(15px) translateX(-15px);
+        opacity: 0.9;
+    }
+}
+
+@keyframes float-car-3 {
+    0%, 100% {
+        transform: translateY(0px) translateX(0px) rotate(0deg);
+        opacity: 0.8;
+    }
+    50% {
+        transform: translateY(-25px) translateX(50px) rotate(2deg);
+        opacity: 0.6;
+    }
+}
+
+/* Car Data Streams */
+.car-data-stream {
+    position: absolute;
+    width: 2px;
+    height: 40px;
+    background: linear-gradient(to bottom,
+        rgba(0, 212, 255, 0.8) 0%,
+        rgba(0, 255, 136, 0.6) 50%,
+        transparent 100%
+    );
+    animation: data-stream 2s linear infinite;
+}
+
+.car-data-stream:nth-child(1) {
+    top: 30%;
+    left: 25%;
+    animation-delay: 0s;
+}
+
+.car-data-stream:nth-child(2) {
+    top: 45%;
+    left: 70%;
+    animation-delay: 0.5s;
+}
+
+.car-data-stream:nth-child(3) {
+    top: 65%;
+    left: 40%;
+    animation-delay: 1s;
+}
+
+.car-data-stream:nth-child(4) {
+    top: 25%;
+    left: 80%;
+    animation-delay: 1.5s;
+}
+
+@keyframes data-stream {
+    0% {
+        transform: translateY(0px);
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(200px);
+        opacity: 0;
+    }
+}
+
+/* AI Car Network Lines */
+.car-network-line {
+    position: absolute;
+    height: 1px;
+    background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(0, 212, 255, 0.4) 20%,
+        rgba(0, 255, 136, 0.6) 50%,
+        rgba(0, 212, 255, 0.4) 80%,
+        transparent 100%
+    );
+    animation: network-pulse 3s ease-in-out infinite;
+}
+
+.network-line-1 {
+    top: 35%;
+    left: 20%;
+    width: 200px;
+    transform: rotate(15deg);
+    animation-delay: 0s;
+}
+
+.network-line-2 {
+    top: 50%;
+    right: 25%;
+    width: 180px;
+    transform: rotate(-20deg);
+    animation-delay: 1s;
+}
+
+.network-line-3 {
+    bottom: 35%;
+    left: 15%;
+    width: 160px;
+    transform: rotate(45deg);
+    animation-delay: 2s;
+}
+
+@keyframes network-pulse {
+    0%, 100% {
+        opacity: 0.3;
+        transform: scaleY(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scaleY(2);
+    }
+}
+
+/* Car HUD Elements */
+.car-hud-element {
+    position: absolute;
+    border: 1px solid rgba(0, 212, 255, 0.3);
+    background: rgba(0, 212, 255, 0.05);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 10px;
+    font-family: 'Courier New', monospace;
+    color: var(--accent-blue);
+    backdrop-filter: blur(3px);
+    animation: hud-flicker 4s ease-in-out infinite;
+}
+
+.hud-element-1 {
+    top: 25%;
+    left: 8%;
+    animation-delay: 0s;
+}
+
+.hud-element-1::before {
+    content: 'SPD: 65 mph';
+}
+
+.hud-element-2 {
+    top: 40%;
+    right: 12%;
+    animation-delay: 1s;
+}
+
+.hud-element-2::before {
+    content: 'TEMP: 92°C';
+}
+
+.hud-element-3 {
+    bottom: 30%;
+    left: 12%;
+    animation-delay: 2s;
+}
+
+.hud-element-3::before {
+    content: 'BAT: 92%';
+}
+
+.hud-element-4 {
+    bottom: 40%;
+    right: 8%;
+    animation-delay: 3s;
+}
+
+.hud-element-4::before {
+    content: 'GPS: ACTIVE';
+}
+
+@keyframes hud-flicker {
+    0%, 95% {
+        opacity: 0.7;
+    }
+    96%, 98% {
+        opacity: 0.3;
+    }
+    99%, 100% {
+        opacity: 0.9;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .full-width-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        gap: 20px;
+        padding: 20px;
+        height: auto;
+        min-height: calc(100vh - 70px);
+    }
+
+    .left-car-section {
+        grid-column: 1 / 2;
+        grid-row: 1 / 2;
+        order: 1;
+    }
+
+    .center-content {
+        grid-column: 1 / 2;
+        grid-row: 2 / 3;
+        order: 2;
+        padding: 20px;
+    }
+
+    .right-car-section {
+        grid-column: 1 / 2;
+        grid-row: 3 / 4;
+        order: 3;
+    }
+
+    .features-grid-center {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+}
+
+@media (max-width: 768px) {
+    .full-width-container {
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .center-content {
+        padding: 15px;
+    }
+
+    .hero-title {
+        font-size: 28px;
+    }
+
+    .hero-description {
+        font-size: 14px;
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero-actions .btn-primary,
+    .hero-actions .btn-secondary {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .car-display {
+        width: 150px;
+        height: 90px;
+    }
+
+    .car-body {
+        width: 135px;
+        height: 60px;
+    }
+
+    .car-windows {
+        width: 105px;
+        height: 20px;
+    }
+
+    .nav-item {
+        padding: 8px 10px;
+    }
+
+    .nav-item span {
+        font-size: 10px;
+    }
+}
+
+/* ScrollBar */
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--secondary-bg);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-color);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-blue);
+}
