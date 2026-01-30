@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JARVIS Car AI - Authentication</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favico-icon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favico-icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favico-icon/favicon-16x16.png">
+    <link rel="manifest" href="/favico-icon/site.webmanifest">
+</head>
+<body>
+    <div class="background-container"></div>
+    
+    <div class="floating-particles">
+        <div class="particle"></div> <div class="particle"></div>
+        <div class="particle"></div> <div class="particle"></div>
+        <div class="particle"></div> <div class="particle"></div>
+        <div class="particle"></div> <div class="particle"></div>
+        <div class="particle"></div> <div class="particle"></div>
+        <div class="particle"></div> <div class="particle"></div>
+        <div class="particle"></div> <div class="particle"></div>
+        <div class="particle"></div> <div class="particle"></div>
+        <div class="particle"></div> <div class="particle"></div>
+        <div class="particle"></div> <div class="particle"></div>
+    </div>
+
+    <div class="hud-elements">
+        <div class="hud-element top-left"></div>
+        <div class="hud-element top-right"></div>
+        <div class="hud-element bottom-left"></div>
+        <div class="hud-element bottom-right"></div>
+    </div>
+
+    <div class="tata-technologies">
+        <div class="tata-logo">
+            <img src="Tata-Logo.png" alt="Tata Technologies Logo">
+        </div>
+        <div class="tata-text">
+            <span>T</span><span>A</span><span>T</span><span>A</span>
+            <span class="space"></span>
+            <span>T</span><span>E</span><span>C</span><span>H</span><span>N</span><span>O</span><span>L</span><span>O</span><span>G</span><span>I</span><span>E</span><span>S</span>
+            <span class="space"></span>
+            <span class="space"></span>
+            <span>X</span>
+            <span class="space"></span>
+            <span class="space"></span>
+            <span>T</span><span>E</span><span>A</span><span>M</span>
+            <span class="space"></span>
+            <span>E</span><span>L</span><span>I</span><span>T</span><span>E</span>
+        </div>
+    </div>
+
+    <div class="auth-container">
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <div class="form-container">
+                        <div class="logo">
+                            <i class="fas fa-car"></i>
+                            <h2>JARVIS CAR AI</h2>
+                        </div>
+                        <p class="subtitle">Welcome Back, Driver</p>
+                        <form id="login-form">
+                            <div class="input-group">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="login-email" required>
+                                <label for="login-email">Email Address</label>
+                            </div>
+                            <div class="input-group">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="login-password" required>
+                                <label for="login-password">Password</label>
+                            </div>
+                            <a href="#" class="forgot-password">Forgot Password?</a>
+                            <button type="submit" class="auth-button">
+                                <span>SIGN IN</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <p class="toggle-text">Don't have an account? <a href="#" id="flip-to-signup">Sign Up</a></p>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="flip-card-back">
+                    <div class="form-container">
+                        <div class="logo">
+                            <i class="fas fa-user-plus"></i>
+                            <h2>CREATE ACCOUNT</h2>
+                        </div>
+                        <p class="subtitle">Join the Future of Driving</p>
+                        <form id="signup-form">
+                            <div class="input-group">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="signup-name" required>
+                                <label for="signup-name">Full Name</label>
+                            </div>
+                            <div class="input-group">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="signup-email" required>
+                                <label for="signup-email">Email Address</label>
+                            </div>
+                            <div class="input-group">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="signup-password" required>
+                                <label for="signup-password">Create Password</label>
+                            </div>
+                            <button type="submit" class="auth-button">
+                                <span>CREATE ACCOUNT</span>
+                                <i class="fas fa-check"></i>
+                            </button>
+                            <p class="toggle-text">Already have an account? <a href="#" id="flip-to-signin">Sign In</a></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="notification-toast">
+        <p>System authentication initialized</p>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
