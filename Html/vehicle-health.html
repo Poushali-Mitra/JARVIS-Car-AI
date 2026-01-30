@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Health Dashboard - CARVIS Car AI</title>
+    <!-- Link to header CSS file -->
+    <link href="/header/header.css" rel="stylesheet" type="text/css" />
+    <!-- Link to chatbot CSS file -->
+    <link href="/chatbot/chatbot.css" rel="stylesheet" type="text/css" />
+    <!-- Link to specific CSS file -->
+    <link href="/css/vehicle-health.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/preloader/preloader.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="/favico-icon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favico-icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favico-icon/favicon-16x16.png">
+    <link rel="manifest" href="/favico-icon/site.webmanifest">
+    
+</head>
+<body>
+    <header id="header-placeholder"></header>
+    <div id="google_translate_element" style="display:none;"></div>
+
+    <!-- Main Content -->
+    <main class="vehicle-health-main">
+        <!-- Hero Header Section -->
+        <section class="vehicle-hero">
+            <div class="hero-content">
+                <div class="carvis-brand">
+                    <h1 class="hero-title">Vehicle Health Dashboard</h1>
+                    <p class="hero-subtitle">Real-time monitoring and AI-powered diagnostics</p>
+                </div>
+                <div class="ai-animation">
+                    <div class="pulse-ring"></div>
+                    <div class="pulse-ring ring-2"></div>
+                    <div class="ai-core">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="status-overview">
+                <div class="overall-status">
+                    <div class="status-indicator good">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <span class="status-text">Vehicle Status: Good</span>
+                </div>
+                <div class="last-scan">
+                    <i class="fas fa-clock"></i>
+                    <span>Last scan: 2 minutes ago</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Health Metrics Grid -->
+        <section class="health-metrics">
+            <div class="metrics-grid">
+                <!-- Engine Temperature -->
+                <div class="metric-card" data-metric="engine">
+                    <div class="card-header">
+                        <div class="metric-icon engine">
+                            <i class="fas fa-thermometer-half"></i>
+                        </div>
+                        <div class="status-badge normal" id="engine-status">
+                            <span class="status-dot"></span>
+                            NORMAL
+                        </div>
+                    </div>
+                    <div class="metric-info">
+                        <h3>Engine Temperature</h3>
+                        <div class="metric-value">
+                            <span class="value" id="engine-temp">87</span>
+                            <span class="unit">°C</span>
+                        </div>
+                        <div class="metric-range">Optimal: 80-95°C</div>
+                    </div>
+                    <div class="metric-chart">
+                        <canvas id="engineChart" width="280" height="100"></canvas>
+                    </div>
+                </div>
+
+                <!-- Oil Quality -->
+                <div class="metric-card" data-metric="oil">
+                    <div class="card-header">
+                        <div class="metric-icon oil">
+                            <i class="fas fa-oil-can"></i>
+                        </div>
+                        <div class="status-badge good" id="oil-status">
+                            <span class="status-dot"></span>
+                            GOOD
+                        </div>
+                    </div>
+                    <div class="metric-info">
+                        <h3>Oil Quality & Level</h3>
+                        <div class="metric-value">
+                            <span class="value" id="oil-quality">84</span>
+                            <span class="unit">%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="oil-progress" style="width: 84%;"></div>
+                        </div>
+                    </div>
+                    <div class="additional-info">
+                        <div class="info-item">
+                            <span>Level:</span>
+                            <span id="oil-level">92%</span>
+                        </div>
+                        <div class="info-item">
+                            <span>Viscosity:</span>
+                            <span id="oil-viscosity">Good</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Brake Pads -->
+                <div class="metric-card" data-metric="brakes">
+                    <div class="card-header">
+                        <div class="metric-icon brakes">
+                            <i class="fas fa-car-crash"></i>
+                        </div>
+                        <div class="status-badge warning" id="brake-status">
+                            <span class="status-dot"></span>
+                            WARNING
+                        </div>
+                    </div>
+                    <div class="metric-info">
+                        <h3>Brake Pad Condition</h3>
+                        <div class="metric-value">
+                            <span class="value" id="brake-condition">45</span>
+                            <span class="unit">%</span>
+                        </div>
+                        <div class="progress-bar warning">
+                            <div class="progress-fill" id="brake-progress" style="width: 45%;"></div>
+                        </div>
+                    </div>
+                    <div class="brake-details">
+                        <div class="brake-wheel">
+                            <span>Front: 45%</span>
+                        </div>
+                        <div class="brake-wheel">
+                            <span>Rear: 68%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Battery -->
+                <div class="metric-card" data-metric="battery">
+                    <div class="card-header">
+                        <div class="metric-icon battery">
+                            <i class="fas fa-battery-three-quarters"></i>
+                        </div>
+                        <div class="status-badge good" id="battery-status">
+                            <span class="status-dot"></span>
+                            GOOD
+                        </div>
+                    </div>
+                    <div class="metric-info">
+                        <h3>Battery Health</h3>
+                        <div class="metric-value">
+                            <span class="value" id="battery-voltage">12.6</span>
+                            <span class="unit">V</span>
+                        </div>
+                        <div class="battery-visual">
+                            <div class="battery-body">
+                                <div class="battery-level" id="battery-level" style="width: 85%;"></div>
+                            </div>
+                            <div class="battery-tip"></div>
+                        </div>
+                    </div>
+                    <div class="additional-info">
+                        <div class="info-item">
+                            <span>Charge:</span>
+                            <span id="battery-charge">85%</span>
+                        </div>
+                        <div class="info-item">
+                            <span>Health:</span>
+                            <span id="battery-health">Good</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tire Pressure -->
+                <div class="metric-card tire-card" data-metric="tires">
+                    <div class="card-header">
+                        <div class="metric-icon tires">
+                            <i class="fas fa-circle"></i>
+                        </div>
+                        <div class="status-badge normal" id="tire-status">
+                            <span class="status-dot"></span>
+                            NORMAL
+                        </div>
+                    </div>
+                    <div class="metric-info">
+                        <h3>Tire Pressure</h3>
+                        <div class="tire-grid">
+                            <div class="tire-wheel" data-tire="fl">
+                                <div class="tire-visual">
+                                    <i class="fas fa-circle"></i>
+                                    <span class="tire-pressure" id="tire-fl">32</span>
+                                </div>
+                                <span class="tire-label">FL</span>
+                            </div>
+                            <div class="tire-wheel" data-tire="fr">
+                                <div class="tire-visual">
+                                    <i class="fas fa-circle"></i>
+                                    <span class="tire-pressure" id="tire-fr">31</span>
+                                </div>
+                                <span class="tire-label">FR</span>
+                            </div>
+                            <div class="tire-wheel" data-tire="rl">
+                                <div class="tire-visual">
+                                    <i class="fas fa-circle"></i>
+                                    <span class="tire-pressure" id="tire-rl">33</span>
+                                </div>
+                                <span class="tire-label">RL</span>
+                            </div>
+                            <div class="tire-wheel" data-tire="rr">
+                                <div class="tire-visual">
+                                    <i class="fas fa-circle"></i>
+                                    <span class="tire-pressure" id="tire-rr">32</span>
+                                </div>
+                                <span class="tire-label">RR</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coolant -->
+                <div class="metric-card" data-metric="coolant">
+                    <div class="card-header">
+                        <div class="metric-icon coolant">
+                            <i class="fas fa-tint"></i>
+                        </div>
+                        <div class="status-badge good" id="coolant-status">
+                            <span class="status-dot"></span>
+                            GOOD
+                        </div>
+                    </div>
+                    <div class="metric-info">
+                        <h3>Coolant System</h3>
+                        <div class="metric-value">
+                            <span class="value" id="coolant-temp">89</span>
+                            <span class="unit">°C</span>
+                        </div>
+                        <div class="coolant-tank">
+                            <div class="tank-body">
+                                <div class="coolant-level" id="coolant-level" style="height: 78%;"></div>
+                            </div>
+                            <div class="level-indicator">78%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Chart Analytics Section -->
+        <section class="analytics-section">
+            <div class="section-header">
+                <h2>Performance Analytics</h2>
+                <div class="chart-controls">
+                    <button class="chart-btn active" data-period="24h">24H</button>
+                    <button class="chart-btn" data-period="7d">7D</button>
+                    <button class="chart-btn" data-period="30d">30D</button>
+                </div>
+            </div>
+            <div class="chart-container">
+                <canvas id="performanceChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Service Reminder Banner -->
+        <section class="service-banner">
+            <div class="service-content">
+                <div class="service-icon">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <div class="service-info">
+                    <h3>Next Service Due</h3>
+                    <div class="service-details">
+                        <div class="service-date">
+                            <i class="fas fa-calendar"></i>
+                            <span>February 15, 2025</span>
+                        </div>
+                        <div class="service-mileage">
+                            <i class="fas fa-road"></i>
+                            <span>2,450 miles remaining</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-actions">
+                    <button class="book-service-btn">
+                        <i class="fas fa-calendar-plus"></i>
+                        Book Service
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Metric Detail Modal -->
+    <div class="modal-overlay" id="metricModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Metric Details</h3>
+                <button class="modal-close" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Dynamic content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot Placeholder -->
+    <div id="chatbot-placeholder"></div>
+    <script src="/preloader/preloader.js"></script>
+    <script src="/js/vehicle-health.js"></script>
+    <script src="/chatbot/chatbot.js"></script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>

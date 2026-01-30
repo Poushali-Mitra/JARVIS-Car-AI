@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Companion - JARVIS Car AI</title>
+    <link href="/header/header.css" rel="stylesheet" type="text/css" />
+    <link href="/chatbot/chatbot.css" rel="stylesheet" type="text/css" />
+    <link href="/css/ai-companion.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/preloader/preloader.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favico-icon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favico-icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favico-icon/favicon-16x16.png">
+    <link rel="manifest" href="/favico-icon/site.webmanifest">
+</head>
+<body>
+    <header id="header-placeholder"></header>
+    <div id="google_translate_element" style="display:none;"></div>
+
+    <div class="page-wrapper">
+        <main class="main-content page-content">
+            <div class="section-header">
+                <h2>AI Companion Interface</h2>
+                <p>Interact with JARVIS using voice or text commands</p>
+            </div>
+            <div class="companion-interface">
+                <div class="voice-ui-card">
+                    <h3>Voice Interface</h3>
+                    
+                    <div class="language-selector">
+                        <label for="language-select">Language:</label>
+                        <select id="language-select">
+                            <option value="en-US">English</option>
+                            <option value="hi-IN">हिन्दी (Hindi)</option>
+                            <option value="bn-IN">বাংলা (Bengali)</option>
+                            <option value="or-IN">ଓଡ଼ିଆ (Odia)</option>
+                            <option value="ta-IN">தமிழ் (Tamil)</option>
+                            <option value="ml-IN">മലയാളം (Malayalam)</option>
+                            <option value="es-ES">Español (Spanish)</option>
+                            <option value="fr-FR">Français (French)</option>
+                            <option value="de-DE">Deutsch (German)</option>
+                        </select>
+                    </div>
+
+                    <div class="voice-visualizer">
+                        <div class="voice-wave"></div>
+                        <div class="voice-wave"></div>
+                        <div class="voice-wave"></div>
+                        <div class="voice-wave"></div>
+                        <div class="voice-wave"></div>
+                    </div>
+                    
+                    <!-- CORRECTED: Container for the voice control buttons -->
+                    <div class="voice-controls">
+                        <button class="voice-button" id="voice-btn">
+                            <i class="fas fa-microphone"></i>
+                        </button>
+                        <!-- Button to stop the AI's speech -->
+                        <button class="stop-speech-button" id="stop-speech-btn" title="Stop Speaking">
+                            <i class="fas fa-stop-circle"></i>
+                        </button>
+                    </div>
+
+                    <div class="voice-status" id="voice-status">Click to start listening</div>
+                </div>
+                <div class="chat-interface">
+                    <div class="chat-header">
+                        <h3>Chat History</h3>
+                        <button id="clear-chat-btn" title="Clear Chat">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+                    <div class="chat-messages" id="chat-messages">
+                        <div class="message ai-message">
+                            <i class="fas fa-robot"></i>
+                            <div>Hello! I'm JARVIS, your AI automotive companion. How can I assist you today?</div>
+                        </div>
+                    </div>
+                    <div class="chat-input-area">
+                        <div class="suggested-prompts" id="suggested-prompts">
+                            <button class="prompt-btn">Check engine status</button>
+                            <button class="prompt-btn">Plan a route</button>
+                            <button class="prompt-btn">What's my tire pressure?</button>
+                        </div>
+                        <form id="chat-form" class="chat-form">
+                            <input type="text" id="message-input" placeholder="Type your message here..." autocomplete="off">
+                            <button type="submit" id="send-btn">
+                                <i class="fas fa-paper-plane"></i>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="/preloader/preloader.js"></script>
+    <script src="/js/ai-companion.js"></script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
+

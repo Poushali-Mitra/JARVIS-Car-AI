@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics Dashboard - JARVIS Car AI</title>
+    <link href="/header/header.css" rel="stylesheet" type="text/css" />
+    <link href="/chatbot/chatbot.css" rel="stylesheet" type="text/css" />
+    <link href="/css/analytics.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/preloader/preloader.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="apple-touch-icon" sizes="180x180" href="/favico-icon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favico-icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favico-icon/favicon-16x16.png">
+    <link rel="manifest" href="/favico-icon/site.webmanifest">
+</head>
+<body>
+    <header id="header-placeholder"></header>
+    <div id="google_translate_element" style="display:none;"></div>
+
+    <div class="page-wrapper">
+        <main class="analytics-container">
+            <div class="section-header">
+                <h2>Performance Analytics</h2>
+                <p>Comprehensive vehicle data analysis and insights</p>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="dashboard-column">
+                    <div class="analytics-overview">
+                        <div class="stat-card">
+                            <i class="fas fa-road stat-icon blue"></i>
+                            <div class="stat-info">
+                                <h4>Total Miles</h4>
+                                <div class="stat-value">23,847</div>
+                            </div>
+                            <div class="stat-change positive">+245 this month</div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-gas-pump stat-icon green"></i>
+                            <div class="stat-info">
+                                <h4>Fuel Efficiency</h4>
+                                <div class="stat-value">28.5 <span class="unit">MPG</span></div>
+                            </div>
+                            <div class="stat-change positive">+1.2 MPG</div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-shield-alt stat-icon orange"></i>
+                            <div class="stat-info">
+                                <h4>Safety Score</h4>
+                                <div class="stat-value">87 <span class="unit">/100</span></div>
+                            </div>
+                            <div class="stat-change neutral">Stable</div>
+                        </div>
+                        <div class="stat-card">
+                            <i class="fas fa-wrench stat-icon red"></i>
+                            <div class="stat-info">
+                                <h4>Maintenance Cost</h4>
+                                <div class="stat-value">$342</div>
+                            </div>
+                            <div class="stat-change positive">-$58 vs Q2</div>
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Fuel Efficiency (Last 7 Days)</h3>
+                        <div class="chart-wrapper">
+                            <canvas id="fuelEfficiencyChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-column">
+                    <div class="chart-card large">
+                        <h3>Driving Score Over Time</h3>
+                        <div class="chart-wrapper">
+                            <canvas id="drivingScoreChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Common Trip Types</h3>
+                        <div class="chart-wrapper">
+                            <canvas id="tripTypesChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-column">
+                    <div class="analytics-insights">
+                        <h3>Monthly Insights</h3>
+                        <div class="insight-cards">
+                            <div class="insight-card positive">
+                                <i class="fas fa-chart-line"></i>
+                                <div>
+                                    <h4>Improved Efficiency</h4>
+                                    <p>Your fuel efficiency has improved by 4.3% this month due to smoother driving.</p>
+                                </div>
+                            </div>
+                            <div class="insight-card neutral">
+                                <i class="fas fa-info-circle"></i>
+                                <div>
+                                    <h4>Maintenance Due</h4>
+                                    <p>Regular maintenance is scheduled in 12 days to maintain optimal performance.</p>
+                                </div>
+                            </div>
+                             <div class="insight-card negative">
+                                <i class="fas fa-tachometer-alt"></i>
+                                <div>
+                                    <h4>Hard Braking Events</h4>
+                                    <p>An increase in hard braking events was noted this week. Try to anticipate stops earlier.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="chatbot-placeholder"></div>
+    <script src="/preloader/preloader.js"></script>
+    <script src="/js/analytics.js"></script>
+    <script src="/chatbot/chatbot.js"></script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>
