@@ -1,0 +1,188 @@
+/* header.css */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 70px;
+    background: var(--secondary-bg);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    z-index: 999;
+    backdrop-filter: blur(10px);
+}
+
+.nav-brand .jarvis-logo {
+    font-size: 24px;
+    font-weight: bold;
+    background: linear-gradient(45deg, var(--accent-blue), var(--accent-green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Default styles for larger screens */
+.nav-links-container {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-items {
+    display: flex;
+    gap: 5px;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.nav-settings {
+    display: flex;
+    gap: 5px;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 8px 12px;
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 11px;
+    text-decoration: none;
+    min-width: 80px; 
+}
+
+.nav-item i {
+    font-size: 14px;
+}
+
+.nav-item:hover {
+    background: var(--hover-color);
+    color: var(--text-primary);
+    text-decoration: none;
+}
+
+.nav-item.active {
+    background: var(--accent-blue);
+    color: white;
+}
+
+/* Hide menu toggle by default on large screens */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: var(--text-primary);
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+}
+
+.menu-toggle:hover {
+    background: var(--hover-color);
+}
+
+
+/* Media Query for Tablets and smaller screens */
+@media (max-width: 768px) {
+    .navbar {
+        height: 60px; 
+        padding: 0 15px;
+    }
+
+    .nav-brand .jarvis-logo {
+        font-size: 20px;
+    }
+
+    /* Show the hamburger menu toggle */
+    .menu-toggle {
+        display: block;
+    }
+
+    /* Hide the full navigation by default on small screens */
+    .nav-links-container {
+        display: none; 
+        flex-direction: column;
+        position: absolute;
+        top: 60px; 
+        left: 0;
+        width: 100%;
+        background: var(--secondary-bg);
+        border-top: 1px solid var(--border-color);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        padding: 10px 0;
+        z-index: 998;
+        align-items: flex-start; 
+        justify-content: flex-start;
+        max-height: calc(100vh - 60px); 
+        overflow-y: auto; 
+    }
+
+    /* When the menu is open */
+    .nav-links-container.open {
+        display: flex;
+    }
+
+    .nav-items,
+    .nav-settings {
+        flex-direction: column;
+        width: 100%;
+        gap: 0;
+        align-items: center;
+    }
+
+    .nav-item {
+        width: 100%;
+        padding: 12px 20px;
+        font-size: 14px;
+        min-width: unset; 
+        text-align: center; 
+    }
+
+    /* Hide icons on tablet/mobile */
+    .nav-item i {
+        display: none;
+    }
+
+    /* Ensure text is centered and visible */
+    .nav-item span {
+        display: block;
+        text-align: center;
+    }
+
+    /* Add a border between nav-items for better separation */
+    .nav-items .nav-item:not(:last-child) {
+        border-bottom: 1px solid rgba(var(--border-color-rgb), 0.2);
+    }
+
+    /* Remove border for the last item in settings to avoid double border */
+    .nav-settings .nav-item:last-child {
+        border-bottom: none;
+    }
+
+    /* Add a separator between nav-items and nav-settings sections */
+    .nav-settings {
+        margin-top: 10px; 
+        border-top: 1px solid rgba(var(--border-color-rgb), 0.2);
+        padding-top: 10px;
+    }
+}
+
+/* Additional adjustments for very small screens if necessary */
+@media (max-width: 480px) {
+    .nav-item {
+        font-size: 13px;
+    }
+}
